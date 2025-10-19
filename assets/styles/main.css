@@ -1,0 +1,648 @@
+/* SQL Mystery - Interface Ultra Moderna */
+
+/* Importar fontes premium */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis de cores - Tema Cyberpunk Avançado */
+:root {
+    --primary-cyan: #00f0ff;
+    --primary-purple: #b026ff;
+    --accent-pink: #ff0080;
+    --accent-green: #00ff88;
+    --accent-orange: #ff6600;
+    
+    --dark-bg: #0a0e27;
+    --darker-bg: #050814;
+    --card-bg: rgba(20, 25, 45, 0.95);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    
+    --border-glow: rgba(0, 240, 255, 0.4);
+    --border-glow-purple: rgba(176, 38, 255, 0.4);
+    
+    --text-primary: #e0e6ff;
+    --text-secondary: #8b92b8;
+    --text-accent: #ffffff;
+    
+    --success-green: #00ff88;
+    --error-red: #ff3366;
+    --warning-yellow: #ffcc00;
+    --info-blue: #00aaff;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+    --gradient-secondary: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+    --gradient-success: linear-gradient(135deg, var(--success-green), var(--primary-cyan));
+    
+    /* Sombras */
+    --shadow-glow: 0 0 30px rgba(0, 240, 255, 0.3);
+    --shadow-glow-purple: 0 0 30px rgba(176, 38, 255, 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Reset e estilos globais */
+* {
+    box-sizing: border-box;
+}
+
+.stApp {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(176, 38, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de partículas de fundo */
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, var(--primary-cyan), transparent),
+        radial-gradient(2px 2px at 40px 70px, var(--primary-purple), transparent),
+        radial-gradient(1px 1px at 90px 40px, var(--accent-pink), transparent),
+        radial-gradient(1px 1px at 130px 80px, var(--accent-green), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: float 20s ease-in-out infinite;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Header principal ultra moderno */
+.header-container {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    margin: 2rem;
+    box-shadow: var(--shadow-card);
+}
+
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0.1;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+    margin: 0;
+    letter-spacing: 0.1em;
+    animation: glow 2s ease-in-out infinite alternate;
+    position: relative;
+}
+
+.main-title::after {
+    content: '?';
+    position: absolute;
+    top: -10px;
+    right: -50px;
+    font-size: 2rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 50px rgba(0, 240, 255, 0.5); }
+    to { text-shadow: 0 0 80px rgba(0, 240, 255, 0.8), 0 0 100px rgba(176, 38, 255, 0.3); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    color: var(--primary-cyan);
+    margin-top: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Seção de introdução */
+.intro-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    box-shadow: var(--shadow-card);
+}
+
+.intro-section p {
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin: 0.5rem 0;
+}
+
+/* Cards dos episódios ultra modernos */
+.episode-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.episode-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.episode-card:hover {
+    border-color: var(--primary-cyan);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-10px) scale(1.02);
+}
+
+.episode-card:hover::before {
+    opacity: 0.1;
+}
+
+.episode-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-cyan);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.episode-card h4 {
+    color: var(--primary-purple);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.episode-card p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.episode-card ul {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+.episode-card ul li {
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    background: rgba(0, 240, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-cyan);
+    transition: all 0.3s ease;
+}
+
+.episode-card ul li:hover {
+    background: rgba(0, 240, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* Header dos episódios */
+.episode-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-glow);
+}
+
+.episode-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-cyan);
+    margin: 0;
+}
+
+.episode-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    margin-top: 0.5rem;
+}
+
+/* Container de puzzle ultra moderno */
+.puzzle-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--border-glow-purple);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.puzzle-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-secondary);
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.puzzle-container h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-cyan);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.puzzle-container h3::before {
+    content: '?';
+    font-size: 1.2rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.puzzle-description {
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-size: 1.2rem;
+    background: rgba(0, 240, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-cyan);
+}
+
+/* Botões ultra modernos */
+button[kind="primary"] {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    border: none !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    padding: 1rem 2rem !important;
+    border-radius: 12px !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+button[kind="primary"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+button[kind="primary"]:hover {
+    box-shadow: var(--shadow-glow) !important;
+    transform: translateY(-3px) scale(1.05) !important;
+}
+
+button[kind="primary"]:hover::before {
+    left: 100%;
+}
+
+button[kind="secondary"] {
+    background: var(--glass-bg) !important;
+    color: var(--primary-cyan) !important;
+    border: 2px solid var(--border-glow) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 600 !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+button[kind="secondary"]:hover {
+    background: rgba(0, 240, 255, 0.1) !important;
+    border-color: var(--primary-cyan) !important;
+    box-shadow: var(--shadow-glow) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Editor SQL ultra moderno */
+textarea {
+    background: rgba(5, 8, 20, 0.9) !important;
+    border: 2px solid var(--border-glow) !important;
+    border-radius: 15px !important;
+    color: var(--primary-cyan) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 1.1rem !important;
+    padding: 1.5rem !important;
+    line-height: 1.6 !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+textarea:focus {
+    border-color: var(--primary-cyan) !important;
+    box-shadow: var(--shadow-glow) !important;
+    outline: none !important;
+}
+
+/* Tabelas de dados ultra modernas */
+.dataframe {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--border-glow) !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-card) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.dataframe th {
+    background: var(--gradient-primary) !important;
+    color: var(--text-accent) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    padding: 1rem !important;
+    letter-spacing: 0.1em !important;
+}
+
+.dataframe td {
+    color: var(--text-primary) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    padding: 0.8rem !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1) !important;
+}
+
+.dataframe tr:hover {
+    background: rgba(0, 240, 255, 0.05) !important;
+}
+
+/* Sidebar ultra moderna */
+.css-1d391kg {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    border-right: 2px solid var(--border-glow) !important;
+}
+
+/* Progress bar ultra moderna */
+.stProgress > div > div {
+    background: var(--gradient-success) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--shadow-glow) !important;
+}
+
+/* Expander ultra moderno */
+.streamlit-expanderHeader {
+    background: var(--glass-bg) !important;
+    border: 2px solid var(--border-glow) !important;
+    color: var(--primary-cyan) !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Alertas ultra modernos */
+.stAlert {
+    border-radius: 15px !important;
+    border: none !important;
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: var(--shadow-card) !important;
+    padding: 1.5rem !important;
+}
+
+.stAlert[data-testid="stAlert"] {
+    border-left: 4px solid var(--primary-cyan) !important;
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Aplicar animações */
+.episode-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.episode-card:nth-child(odd) {
+    animation: fadeInLeft 0.6s ease-out;
+}
+
+.episode-card:nth-child(even) {
+    animation: fadeInRight 0.6s ease-out;
+}
+
+/* Scrollbar ultra moderna */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 6px;
+    border: 2px solid var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-secondary);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .episode-card {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .episode-card ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .header-container {
+        margin: 1rem;
+        padding: 2rem 1rem;
+    }
+}
+
+/* Efeitos de hover para elementos interativos */
+.stButton > button {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* Melhorias para o editor de código */
+.stTextArea > div > div > textarea {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    tab-size: 4 !important;
+}
+
+/* Efeitos de loading */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 240, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-cyan);
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-glow);
+    color: var(--text-secondary);
+}
+
+/* Métricas customizadas */
+.metric-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-container:hover {
+    border-color: var(--primary-cyan);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-5px);
+}
+
+.metric-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.metric-delta {
+    color: var(--accent-green);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
