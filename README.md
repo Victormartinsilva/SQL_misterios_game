@@ -6,6 +6,9 @@
 
 🎮 **Jogo educacional interativo** desenvolvido em Python para ensinar SQL de forma prática e divertida!
 
+## 🎮 **DEMO ONLINE**
+**[🚀 JOGAR AGORA - SQL Mystery](https://sqlmisteriosgame-ximba.streamlit.app/)**
+
 ## 🌟 Características
 
 - 🎨 **Interface Ultra Moderna** com tema cyberpunk
@@ -81,6 +84,9 @@ python main.py        # Jogo completo
 - **Sistema de XP** e conquistas
 
 ## 🌐 Deploy Online
+
+### 🚀 **JOGUE AGORA ONLINE:**
+**[🔍 SQL Mystery - Jogar Online](https://sqlmisteriosgame-ximba.streamlit.app/)**
 
 ### Streamlit Cloud (Gratuito)
 1. Acesse [share.streamlit.io](https://share.streamlit.io)
